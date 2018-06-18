@@ -5,27 +5,17 @@ import ast
 
 def initialize(context):
     print ("Starting the robo advisor")
-    set_benchmark(symbol("AAPL"))
+
     core_series = symbols('VTI', 'VXUS', 'BND', 'BNDX')
+    crsp_series = symbols('VUG', 'VTV', 'VB', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
+    s&p_series = symbols('VOO', 'VXF', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
+    russell_series = symbols('VONG', 'VONV', 'VTWO', 'VEA', 'VTWO', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
+    income_series = symbols('VTI', 'VYM', 'VXUS', 'VYMI', 'BND', 'VTC', 'BNDX')
+    tax_series = symbols('VUG', 'VTV', 'VB', 'VEA', 'VWO', 'VTEB')
 
-
-    '''
-    core_series_weights = {0: (0,0,0.686,0.294),
-                           1: (0.059,0.039,0.617,0.265),
-                           2: (0.118,0.078,0.549,0.235),
-                           3: (0.176,0.118,0.480,0.206),
-                           4: (0.235,0.157,0.412,0.176),
-                           5: (0.294,0.196,0.343,0.147),
-                           6: (0.353,0.235,0.274,0.118),
-                           7: (0.412,0.274,0.206,0.088),
-                           8: (0.470,0.314,0.137,0.059),
-                           9: (0.529,0.353,0.069,0.029),
-                           10: (0.588,0.392,0,0)}
-    '''
-
-    context.stocks = core_series
+    context.stocks = crsp_series
     #risk_based_allocation = core_series_weights
-    risk_based_allocation = section_to_dict('CORE_SERIES')
+    risk_based_allocation = section_to_dict('CRSP_SERIES')
     risk_level = 5
 
     context.target_allocation = dict(zip(context.stocks, risk_based_allocation[risk_level]))
@@ -93,5 +83,5 @@ def section_to_dict(section):
     config.read('universe-config.ini')
     out_dict = {}
     for key in config[section]:
-        out_dict[int(key)] = ast.literal_eval(config['CORE_SERIES'][key])
-	return(out_dict)
+        out_dict[int(key)] = ast.literal_eval(config[section][key])
+    return(out_dict)
