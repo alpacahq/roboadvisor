@@ -14,10 +14,11 @@ def initialize(context):
     tax_series = symbols('VUG', 'VTV', 'VB', 'VEA', 'VWO', 'VTEB')
 
     context.stocks = crsp_series
-    #risk_based_allocation = core_series_weights
     risk_based_allocation = section_to_dict('CRSP_SERIES')
+    #1-9 for Tax Efficient Series, 0-10 otherwise
     risk_level = 5
-
+    if (risk_level not in risk_based_allocation):
+        raise Exception("Portfolio Doesn't Have Risk Level")
     context.target_allocation = dict(zip(context.stocks, risk_based_allocation[risk_level]))
     context.bought = False
 
