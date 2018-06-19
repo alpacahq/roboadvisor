@@ -8,7 +8,7 @@ def initialize(context):
 
     core_series = symbols('VTI', 'VXUS', 'BND', 'BNDX')
     crsp_series = symbols('VUG', 'VTV', 'VB', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
-    s&p_series = symbols('VOO', 'VXF', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
+    sp_series = symbols('VOO', 'VXF', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
     russell_series = symbols('VONG', 'VONV', 'VTWO', 'VEA', 'VTWO', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
     income_series = symbols('VTI', 'VYM', 'VXUS', 'VYMI', 'BND', 'VTC', 'BNDX')
     tax_series = symbols('VUG', 'VTV', 'VB', 'VEA', 'VWO', 'VTEB')
@@ -78,6 +78,18 @@ def rebalance(context, data):
                 continue
             print("Buying " + str(int(amount)) + " shares of " + str(stock))
             order(stock, int(amount))
+
+
+def analyze(context=None, results=None):
+    import matplotlib.pyplot as plt
+    # Plot the portfolio and asset data.
+    ax1 = plt.subplot(211)
+    results.portfolio_value.plot(ax=ax1)
+    ax1.set_ylabel('Portfolio value (ZAR)')
+    # Show the plot.
+    plt.gcf().set_size_inches(18, 8)
+    plt.show()
+
 
 def section_to_dict(section):
     config = ConfigParser()

@@ -16,6 +16,7 @@ RUN pip install pandas==0.18.1 \
 				pymarketstore \
 				zipline \
 				ConfigParser \
+				matplotlib \
 				alpaca-trade-api
 
 RUN zipline ingest -b quantopian-quandl
