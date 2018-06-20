@@ -30,3 +30,25 @@ This robo-advisor makes use of a custom bundle alpaca, which comes with the repo
 
 ## Running with Docker
 If you're interested in running backtesting in a docker container, this repository is configured to do so. Running the following commands will create and launch a docker images that has all necessary dependencies installed, as well as the alpaca bundle ingested.
+
+```
+$git clone https://github.com/alpacahq/roboadvisor.git
+$cd roboadvisor.git
+$docker build -t alpaca/roboadvisor .
+$docker run -it alpaca/roboadvisor bash
+```
+
+If executed properly, you'll see the following in your terminal:
+
+```
+$docker run -it alpaca/roboadvisor bash
+$root@b2cefad654cf:/home/robo-advisor#
+```
+
+You can then run the algorithm you want using the command:
+
+```
+$zipline run -f <filename> -b alpaca --start 2018-01-01 --end 2018-06-01
+```
+
+If you're interested in running your own algorithm using the data the Alpaca bundle provides (ETFs among others), simply add the file containing your algorithm to the folder, and rebuild the docker image using the `docker build` command. If you use the same name (`alpaca/roboadvisor`), the previous image will be overwritten. 
