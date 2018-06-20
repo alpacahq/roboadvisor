@@ -20,13 +20,18 @@ The src files in the repo contain a robo advisor in three distinct stages.
 
 
 ## Running Locally
-If you're interested in running the code locally. There are dependencies to install, and steps to take.
+If you're interested in running the code locally, there are dependencies to install, and steps to take.
 1. Install Zipline. 
-2. Ingest the bundle that contains ticker data for backtesting
+2. Install the alpaca-trade-api. It's necessary for bundle use. 
+3. Ingest the bundle that contains ticker data for backtesting
 
-You can find OS-specific installation instructions for zipline [here](http://www.zipline.io/install.html). I'm going to second their recommendation to run zipline in either a virtual environment. 
+You can find OS-specific installation instructions for zipline [here](http://www.zipline.io/install.html). I'm going to second their recommendation to run zipline in either a virtual environment. You can find installation instructions for the alpaca-trade-api [here](https://github.com/alpacahq/alpaca-trade-api-python). 
 
-This robo-advisor makes use of a custom bundle alpaca, which comes with the repository. To make use of alpaca data, 
+To ingest the bundle. Run the following command after cloning the repository:
+```
+$./setup/setup.sh
+```
+
 
 ## Running with Docker
 If you're interested in running backtesting in a docker container, this repository is configured to do so. Running the following commands will create and launch a docker images that has all necessary dependencies installed, as well as the alpaca bundle ingested.
