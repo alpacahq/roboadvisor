@@ -1,7 +1,7 @@
 # roboadvisor
 
 # Introduction
-Robo advisors are automated advising services that require little to no user interaction. They specialize in maintaining portfolios based on the investors chosen risk level. Btw, they were launched at the start of the financial crisis in 2008.
+Robo advisors are automated advising services that require little to no user interaction. They specialize in maintaining portfolios based on the investors chosen risk level. The first robo-advisor was launched at the start of the financial crisis in 2008.
 
 The logic for a robo-advisor takes place in 3 stages:
   - Allocation - Given a risk level, portions of capital are allocated to different positions.
