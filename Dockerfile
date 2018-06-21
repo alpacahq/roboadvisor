@@ -20,7 +20,7 @@ RUN pip install pandas==0.18.1 \
 				alpaca-trade-api
 
 RUN zipline ingest -b quantopian-quandl
-RUN mv dotzipline.tgz /root/.zipline/
+RUN mv setup/dotzipline.tgz /root/.zipline/
 RUN rm /root/.zipline/extension.py
 RUN tar -xvzf /root/.zipline/dotzipline.tgz -C /root/.zipline/
 RUN mkdir /root/.zipline/data/alpaca/2018-06-11T20\;08\;42.452595/minute_equities.bcolz
