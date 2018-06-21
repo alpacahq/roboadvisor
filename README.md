@@ -29,7 +29,8 @@ You can find OS-specific installation instructions for zipline [here](http://www
 
 To ingest the bundle. Run the following command after cloning the repository:
 ```
-$./setup/setup.sh
+$cd setup
+$./setup.sh
 ```
 
 
