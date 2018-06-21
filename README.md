@@ -59,4 +59,6 @@ $zipline run -f <filename> -b alpaca --start 2018-01-01 --end 2018-06-01
 If you're interested in running your own algorithm using the data the Alpaca bundle provides (ETFs among others), simply add the file containing your algorithm to the folder, and rebuild the docker image using the `docker build` command. If you use the same name (`alpaca/roboadvisor`), the previous image will be overwritten. 
 
 ## Creation Process
-If you're interested in the creation process of a roboadvisor, [this](https://hackernoon.com/i-am-a-college-student-and-i-built-my-own-robo-advisor-3f31b39dab50) post on hackernoon talks about the process and how to implement the robo-advisor on Quantopian. 
+If you're interested in the creation process of a roboadvisor, there are a series of posts on hackernoon regarding this robo-advisor:
+
+1. [Part 1](https://hackernoon.com/i-am-a-college-student-and-i-built-my-own-robo-advisor-3f31b39dab50) - Building and implementing a robo-advisor in Quantopian
