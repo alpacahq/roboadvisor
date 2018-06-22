@@ -13,8 +13,9 @@ def initialize(context):
     income_series = symbols('VTI', 'VYM', 'VXUS', 'VYMI', 'BND', 'VTC', 'BNDX')
     tax_series = symbols('VUG', 'VTV', 'VB', 'VEA', 'VWO', 'VTEB')
 
+    config = ConfigParser()
     context.stocks = crsp_series
-    risk_based_allocation = section_to_dict('CRSP_SERIES')
+    risk_based_allocation = section_to_dict('CRSP_SERIES', config)
     #1-9 for Tax Efficient Series, 0-10 otherwise
     risk_level = 5
     if (risk_level not in risk_based_allocation):
@@ -79,22 +80,10 @@ def rebalance(context, data):
             print("Buying " + str(int(amount)) + " shares of " + str(stock))
             order(stock, int(amount))
 
-
-def analyze(context=None, results=None):
-    import matplotlib.pyplot as plt
-    # Plot the portfolio and asset data.
-    ax1 = plt.subplot(211)
-    results.portfolio_value.plot(ax=ax1)
-    ax1.set_ylabel('Portfolio value (ZAR)')
-    # Show the plot.
-    plt.gcf().set_size_inches(18, 8)
-    plt.show()
-
-
-def section_to_dict(section):
-    config = ConfigParser()
-    config.read('universe-config.ini')
+def section_to_dict(section, parser):
+    #change path to your ini file if running locally
+    parser.read('/home/robo-advisor/src/universe-config.ini')
     out_dict = {}
-    for key in config[section]:
-        out_dict[int(key)] = ast.literal_eval(config[section][key])
+    for key in parser[section]:
+        out_dict[int(key)] = ast.literal_eval(parser[section][key])
     return(out_dict)

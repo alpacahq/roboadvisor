@@ -1,6 +1,7 @@
 def initialize(context):
     print ("Starting the robo advisor")
 
+    config = ConfigParser()
     core_series = symbols('VTI', 'VXUS', 'BND', 'BNDX')
     crsp_series = symbols('VUG', 'VTV', 'VB', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
     sp_series = symbols('VOO', 'VXF', 'VEA', 'VWO', 'BSV', 'BIV', 'BLV', 'VMBS', 'BNDX')
@@ -9,7 +10,7 @@ def initialize(context):
     tax_series = symbols('VUG', 'VTV', 'VB', 'VEA', 'VWO', 'VTEB')
 
     context.stocks = crsp_series
-    risk_based_allocation = section_to_dict('CRSP_SERIES')
+    risk_based_allocation = section_to_dict('CRSP_SERIES', config)
     #1-9 for Tax Efficient Series, 0-10 otherwise
     risk_level = 5
     if (risk_level not in risk_based_allocation):
@@ -52,10 +53,9 @@ def before_trading_starts(context, data):
             break
     print("No need to rebalance!")
 
-def section_to_dict(section):
-    config = ConfigParser()
-    config.read('universe-config.ini')
+def section_to_dict(section, parser):
+    parser.read('/home/robo-advisor/src/universe-config.ini')
     out_dict = {}
     for key in config[section]:
-        out_dict[int(key)] = ast.literal_eval(config[section][key])
+        out_dict[int(key)] = ast.literal_eval(parser[section][key])
     return(out_dict)
