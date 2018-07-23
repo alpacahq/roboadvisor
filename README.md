@@ -63,3 +63,4 @@ If you're interested in running your own algorithm using the data the Alpaca bun
 If you're interested in the creation process of a roboadvisor, there are a series of posts on hackernoon regarding this robo-advisor:
 
 1. [Part 1](https://hackernoon.com/i-am-a-college-student-and-i-built-my-own-robo-advisor-3f31b39dab50) - Building and implementing a robo-advisor in Quantopian
+2. [Part 2](https://hackernoon.com/im-a-college-student-and-i-m-still-building-my-robo-advisor-928110fe5bf1) - Implementing that same roboadvisor offline with Zipline, and expanding the roboadvisor to cover all Vanguard universes. 
