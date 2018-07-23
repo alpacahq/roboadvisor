@@ -9,7 +9,7 @@ The logic for a robo-advisor takes place in 3 stages:
   - Rebalancing - Buys and Sells stock 
 
 ## Source Material
-At this point, the robo-advisor does not use mean-variance optimization to allocate. The risk-based weight allocation is taken from this [Vanguard Portfolios](https://advisors.vanguard.com/iwe/pdf/FASINVMP.pdf). Each series its individual universe. 
+At this point, the robo-advisor does not use mean-variance optimization to allocate. The risk-based weight allocation is taken from this set of [Vanguard Portfolios](https://advisors.vanguard.com/iwe/pdf/FASINVMP.pdf). Each series its individual universe. 
 
 ## Contents
 The src files in the repo contain a robo advisor in three distinct stages.
